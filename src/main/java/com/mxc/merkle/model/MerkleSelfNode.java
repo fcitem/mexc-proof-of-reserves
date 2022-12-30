@@ -1,0 +1,47 @@
+package com.mxc.merkle.model;
+
+import com.mxc.merkle.util.SignatureUtil;
+
+import java.util.Objects;
+
+public class MerkleSelfNode extends MerklePathNode {
+    /**
+     * 证明Id
+     */
+    private String proofId;
+    /**
+     * 账户Id
+     */
+    private String accountId;
+
+    public String getProofId() {
+        return proofId;
+    }
+
+    public void setProofId(String proofId) {
+        this.proofId = proofId;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    public boolean validate() {
+        if (Objects.isNull(this.getBalance())) {
+            System.out.println("invalid balance data");
+            return false;
+        }
+        StringBuilder balanceSb = new StringBuilder();
+        this.getBalance().forEach((token, balance) -> balanceSb.append(token).append(":").append(balance).append(","));
+        if (balanceSb.length() > 1) {
+            balanceSb.setLength(balanceSb.length() - 1);
+        }
+        String content = this.getProofId() + "," + this.getAccountId() + "," + balanceSb;
+        return SignatureUtil.genHashId(content).equals(this.getHash());
+    }
+
+}
