@@ -11,21 +11,21 @@ import java.nio.file.Paths;
 public class MxcMerkleValidator {
     public static void main(String[] args) {
         if (args.length < 1) {
-            throw new RuntimeException("param error");
+            throw new RuntimeException("param required");
         }
         String jsonFile = args[0];
-        byte[] bytes = null;
+        byte[] bytes;
         try {
             bytes = Files.readAllBytes(Paths.get(jsonFile));
         } catch (IOException e) {
             throw new RuntimeException("can not found json file: " + jsonFile);
         }
         String pathJson = new String(bytes);
-        MerkleTree merkleTree = null;
+        MerkleTree merkleTree;
         try {
             merkleTree = JSON.parseObject(pathJson, MerkleTree.class);
         } catch (Exception e) {
-            throw new RuntimeException("json content is error");
+            throw new RuntimeException("json content is inValid");
         }
         boolean validate = MerkleProofValidator.validate(merkleTree);
         System.out.println("validate result is : " + validate);
