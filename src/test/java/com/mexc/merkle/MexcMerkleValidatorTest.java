@@ -1,3 +1,5 @@
+package com.mexc.merkle;
+
 import com.alibaba.fastjson.JSON;
 import com.mexc.merkle.model.MerkleTree;
 import com.mexc.merkle.util.MerkleProofValidator;
@@ -30,6 +32,7 @@ public class MexcMerkleValidatorTest {
             throw new RuntimeException("json content is inValid");
         }
         boolean validate = MerkleProofValidator.validate(merkleTree);
+        System.out.println("validate result is : " + validate);
         Assert.assertTrue(validate);
     }
 
