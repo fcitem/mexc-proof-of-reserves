@@ -31,12 +31,12 @@ public class MerkleSelfNode extends MerklePathNode {
     }
 
     public boolean validate() {
-        if (Objects.isNull(this.getBalance())) {
+        if (Objects.isNull(this.getBalances())) {
             System.out.println("invalid balance data");
             return false;
         }
         StringBuilder balanceSb = new StringBuilder();
-        this.getBalance().forEach((token, balance) -> balanceSb.append(token).append(":").append(balance).append(","));
+        this.getBalances().forEach((token, balance) -> balanceSb.append(token).append(":").append(balance).append(","));
         if (balanceSb.length() > 1) {
             balanceSb.setLength(balanceSb.length() - 1);
         }

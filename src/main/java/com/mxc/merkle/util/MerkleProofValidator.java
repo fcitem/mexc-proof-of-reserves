@@ -84,7 +84,7 @@ public class MerkleProofValidator {
 
     public static MerklePathNode createInnerNode(MerklePathNode leftNode, MerklePathNode rightNode, int type, int level) {
         MerklePathNode merklePathNode = new MerklePathNode();
-        merklePathNode.setBalance(new TreeMap<>());
+        merklePathNode.setBalances(new TreeMap<>());
         merklePathNode.mergeBalance(leftNode);
         //右节点不为空
         if (StringUtils.isNotBlank(rightNode.getHash())) {
@@ -100,7 +100,7 @@ public class MerkleProofValidator {
 
     public static MerklePathNode createEmptyNode(int type, int level) {
         MerklePathNode merklePathNode = new MerklePathNode();
-        merklePathNode.setBalance(new TreeMap<>());
+        merklePathNode.setBalances(new TreeMap<>());
         merklePathNode.setLevel(level);
         merklePathNode.setType(type);
         merklePathNode.setHash("");
@@ -108,9 +108,9 @@ public class MerkleProofValidator {
     }
 
     private static void initBalanceData(MerklePathNode merklePathNode) {
-        merklePathNode.getBalance().putIfAbsent("BTC", BigDecimal.ZERO.toPlainString());
-        merklePathNode.getBalance().putIfAbsent("USDT", BigDecimal.ZERO.toPlainString());
-        merklePathNode.getBalance().putIfAbsent("ETH", BigDecimal.ZERO.toPlainString());
-        merklePathNode.getBalance().putIfAbsent("USDC", BigDecimal.ZERO.toPlainString());
+        merklePathNode.getBalances().putIfAbsent("BTC", BigDecimal.ZERO.toPlainString());
+        merklePathNode.getBalances().putIfAbsent("USDT", BigDecimal.ZERO.toPlainString());
+        merklePathNode.getBalances().putIfAbsent("ETH", BigDecimal.ZERO.toPlainString());
+        merklePathNode.getBalances().putIfAbsent("USDC", BigDecimal.ZERO.toPlainString());
     }
 }

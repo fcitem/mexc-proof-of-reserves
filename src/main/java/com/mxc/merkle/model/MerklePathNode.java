@@ -24,7 +24,7 @@ public class MerklePathNode {
     /**
      * 默克尔资产：key=币种 value= 金额
      */
-    private SortedMap<String, String> balance;
+    private SortedMap<String, String> balances;
 
     public Integer getLevel() {
         return level;
@@ -50,22 +50,22 @@ public class MerklePathNode {
         this.hash = hash;
     }
 
-    public Map<String, String> getBalance() {
-        return balance;
+    public Map<String, String> getBalances() {
+        return balances;
     }
 
-    public void setBalance(SortedMap<String, String> balance) {
-        this.balance = balance;
+    public void setBalances(SortedMap<String, String> balances) {
+        this.balances = balances;
     }
 
     public void mergeBalance(MerklePathNode merklePathNode) {
-        if (Objects.isNull(merklePathNode) || Objects.isNull(merklePathNode.getBalance()) || merklePathNode.getBalance().size() == 0) {
+        if (Objects.isNull(merklePathNode) || Objects.isNull(merklePathNode.getBalances()) || merklePathNode.getBalances().size() == 0) {
             return;
         }
-        merklePathNode.getBalance().forEach((key, value) -> {
-            String existValue = this.balance.get(key);
+        merklePathNode.getBalances().forEach((key, value) -> {
+            String existValue = this.balances.get(key);
             BigDecimal sumBigDecimal = BigDecimalUtils.safeSumBigDecimal(BigDecimalUtils.parseString(existValue), BigDecimalUtils.parseString(value));
-            this.balance.put(key, sumBigDecimal.toPlainString());
+            this.balances.put(key, sumBigDecimal.toPlainString());
         });
     }
 
@@ -78,7 +78,7 @@ public class MerklePathNode {
      */
     public String calcHashId(String leftHash, String rightHash) {
         StringBuilder balanceSb = new StringBuilder();
-        this.getBalance().forEach((token, balance) -> balanceSb.append(token).append(":").append(BigDecimalUtils.getBigDecimalPlainStr(balance)).append(","));
+        this.getBalances().forEach((token, balance) -> balanceSb.append(token).append(":").append(BigDecimalUtils.getBigDecimalPlainStr(balance)).append(","));
         if (balanceSb.length() > 1) {
             balanceSb.setLength(balanceSb.length() - 1);
         }
