@@ -1,4 +1,4 @@
-package com.mxc.merkle.util;
+package com.mexc.merkle.util;
 
 import org.apache.commons.lang3.StringUtils;
 

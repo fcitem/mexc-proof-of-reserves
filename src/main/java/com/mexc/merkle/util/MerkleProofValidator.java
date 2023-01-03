@@ -1,8 +1,8 @@
-package com.mxc.merkle.util;
+package com.mexc.merkle.util;
 
-import com.mxc.merkle.model.MerklePathNode;
-import com.mxc.merkle.model.MerkleSelfNode;
-import com.mxc.merkle.model.MerkleTree;
+import com.mexc.merkle.model.MerklePathNode;
+import com.mexc.merkle.model.MerkleSelfNode;
+import com.mexc.merkle.model.MerkleTree;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 

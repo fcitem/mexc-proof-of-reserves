@@ -1,4 +1,4 @@
-package com.mxc.merkle.model;
+package com.mexc.merkle.model;
 
 import java.util.List;
 

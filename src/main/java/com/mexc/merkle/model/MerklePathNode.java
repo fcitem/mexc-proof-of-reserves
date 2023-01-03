@@ -1,7 +1,7 @@
-package com.mxc.merkle.model;
+package com.mexc.merkle.model;
 
-import com.mxc.merkle.util.BigDecimalUtils;
-import com.mxc.merkle.util.SignatureUtil;
+import com.mexc.merkle.util.BigDecimalUtils;
+import com.mexc.merkle.util.SignatureUtil;
 
 import java.math.BigDecimal;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.mxc.merkle.util;
+package com.mexc.merkle.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

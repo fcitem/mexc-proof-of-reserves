@@ -26,6 +26,12 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.9</version>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.1</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>mexc-proof-of-reserves</finalName>
@@ -39,7 +45,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>com.mxc.merkle.MxcMerkleValidator</mainClass>
+              <mainClass>com.mexc.merkle.MexcMerkleValidator</mainClass>
             </manifest>
           </archive>
         </configuration>

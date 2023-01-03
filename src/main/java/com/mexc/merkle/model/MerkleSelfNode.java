@@ -1,6 +1,6 @@
-package com.mxc.merkle.model;
+package com.mexc.merkle.model;
 
-import com.mxc.merkle.util.SignatureUtil;
+import com.mexc.merkle.util.SignatureUtil;
 
 import java.util.Objects;
 

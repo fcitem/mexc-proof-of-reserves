@@ -1,14 +1,15 @@
-package com.mxc.merkle;
+package com.mexc.merkle;
 
 import com.alibaba.fastjson.JSON;
-import com.mxc.merkle.model.MerkleTree;
-import com.mxc.merkle.util.MerkleProofValidator;
+import com.mexc.merkle.util.MerkleProofValidator;
+import com.mexc.merkle.model.MerkleTree;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class MxcMerkleValidator {
+public class MexcMerkleValidator {
+
     public static void main(String[] args) {
         if (args.length < 1) {
             throw new RuntimeException("param required");
