@@ -17,7 +17,7 @@ public class MerkleProofValidator {
 
     public static final int LEFT_TYPE = 1;
     public static final int RIGHT_TYPE = 2;
-    public static final int ROOT_TYPE = 2;
+    public static final int ROOT_TYPE = 3;
 
     public static boolean validate(MerkleTree merkleTree) {
         if (Objects.isNull(merkleTree)) {
