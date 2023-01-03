@@ -18,7 +18,7 @@ maven
 
 ## 3、验证步骤
 
-将证明文件内容粘贴至当前文件夹的新文件中，并将此文件命名为“myProof.json”。然后，执行以下命令：
+将证明文件内容粘贴至当前文件夹的新文件中，并将此文件命名为你想要保存的名字，如“myProof.json”。然后，执行以下命令：
 
 `java -jar ./target/mexc-proof-of-reserves.jar myProof.json`
 
