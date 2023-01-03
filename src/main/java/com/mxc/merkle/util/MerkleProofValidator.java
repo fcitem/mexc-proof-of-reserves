@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 
 public class MerkleProofValidator {
 
+    public static final int LEFT_TYPE = 1;
+    public static final int RIGHT_TYPE = 2;
+    public static final int ROOT_TYPE = 2;
+
     public static boolean validate(MerkleTree merkleTree) {
         if (Objects.isNull(merkleTree)) {
             throw new IllegalArgumentException("merkleTree not null");
@@ -49,7 +53,7 @@ public class MerkleProofValidator {
             MerklePathNode node = levelNodeMap.get(i);
             if (Objects.isNull(node)) {
                 //创建一个空节点
-                node = createEmptyNode(clcInnerNode.getType() == 1 ? 2 : 1, clcInnerNode.getLevel());
+                node = createEmptyNode(clcInnerNode.getType() == LEFT_TYPE ? RIGHT_TYPE : LEFT_TYPE, clcInnerNode.getLevel());
             }
             nodePair = decideNodePair(clcInnerNode, node);
             int parentLevel = i + 1;
@@ -60,20 +64,21 @@ public class MerkleProofValidator {
             System.out.println("validate error");
             return false;
         }
-        MerklePathNode clcRootNode = createInnerNode(nodePair.getLeft(), nodePair.getRight(), 1, rootNode.getLevel());
+        //计算出来的root节点
+        MerklePathNode clcRootNode = createInnerNode(nodePair.getLeft(), nodePair.getRight(), ROOT_TYPE, rootNode.getLevel());
         return clcRootNode.getHash().equals(rootNode.getHash());
     }
 
     private static Pair<MerklePathNode, MerklePathNode> decideNodePair(MerklePathNode currentNode, MerklePathNode brotherNode) {
-        return currentNode.getType() == 1 ? Pair.of(currentNode, brotherNode) : Pair.of(brotherNode, currentNode);
+        return currentNode.getType() == LEFT_TYPE ? Pair.of(currentNode, brotherNode) : Pair.of(brotherNode, currentNode);
     }
 
     private static int getParentNodeType(MerklePathNode parentNodeBrother) {
         //说明右节点为空
         if (Objects.isNull(parentNodeBrother)) {
-            return 1;
+            return LEFT_TYPE;
         } else {
-            return parentNodeBrother.getType() == 1 ? 2 : 1;
+            return parentNodeBrother.getType() == LEFT_TYPE ? RIGHT_TYPE : LEFT_TYPE;
         }
     }
 
